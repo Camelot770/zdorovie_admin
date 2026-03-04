@@ -47,8 +47,8 @@ async function request<T = unknown>(
 
 // ── API functions ──
 
-export async function login(password: string): Promise<string> {
-  const data = await request<{ token: string }>("POST", "/login", { password });
+export async function login(loginName: string, password: string): Promise<string> {
+  const data = await request<{ token: string }>("POST", "/login", { login: loginName, password });
   setToken(data.token);
   return data.token;
 }
